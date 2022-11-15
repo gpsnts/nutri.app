@@ -1,0 +1,55 @@
+@model IEnumerable<NutriApp.Models.AlimentacaoDia>
+
+@{
+    ViewData["Title"] = "Diário de alimentação";
+}
+<p>
+    <a class="btn btn-dark" asp-action="Create">Criar nota no diário de alimentação</a>
+</p>
+<div class="container-fluid">
+    <div class="table-responsive">
+        <table class="table table-hover bg-secondary border-dark">
+    <thead>
+        <tr>
+            <th class="border-end">
+                @Html.DisplayNameFor(model => model.TotalCalorias)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Dia)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DiaDate)
+            </th>
+            <th>
+                Ações
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalCalorias)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Dia)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DiaDate)
+            </td>
+            <td>
+                <div class="btn-group-vertical">
+                        <a class="btn btn-dark" asp-action="Edit" asp-route-id="@item.Id">Editar</a>
+                        <a class="btn btn-dark" asp-action="Details" asp-route-id="@item.Id">Detalhes</a>
+                        <a class="btn btn-dark" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                        <a class="btn btn-dark" asp-controller="FoodConsumida" asp-action="Create" asp-route-id="@item.Id">Adicionar refeição</a>
+                        <a class="btn btn-dark" asp-controller="FoodConsumida" asp-action="ResumoConsumo" asp-route-id="@item.Id">Resumo de nutrientes</a>
+                        
+                </div>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+</div>
+</div>

@@ -1,0 +1,99 @@
+@model NutriApp.Models.FoodConsumida
+@{
+    ViewData["Title"] = "Resumo consummo";
+    var UsuarioAtual = User.Identity.Name.ToString();
+    var item = Model;
+    decimal proteinasTotais = 0;
+    decimal gordurasTotais = 0;
+    decimal calcioTotal = 0;
+    decimal fosforo = 0;
+    decimal carboidratoTotal = 0;
+    decimal vitaminaATotal = 0;
+    decimal valorEnergetico = 0;
+}
+<div class="container-fluid">
+    <body>
+        <div class="overflow-auto">
+        <meta charset="utf-8" />
+        <h1>Resumo de nutrientes ingeridos:</h1>
+        <hr />
+        <div class="bs-component overflow-auto">
+           
+            @{
+                foreach (var food in item.ListaDeAlimentos)
+                {
+
+                    proteinasTotais = ((decimal)food.proteinas + proteinasTotais);
+                    gordurasTotais = ((decimal)food.gordurasTotais + gordurasTotais);
+                    calcioTotal = ((decimal)food.calico + calcioTotal);
+                    fosforo = ((decimal)food.fosforo + fosforo);
+                    carboidratoTotal = ((decimal)food.carboidrato + carboidratoTotal);
+                    vitaminaATotal = ((decimal)food.vitaminaA + vitaminaATotal);
+                    valorEnergetico = ((decimal)food.valorEnergetico + valorEnergetico);
+                }
+              
+                var iPorcent = proteinasTotais / valorEnergetico;
+                iPorcent = iPorcent * 100;
+                <h3>Valor energético total em kcal: @(string.Format("{0:0.00}", valorEnergetico))</h3>
+                    <h3>Porcentagem de proteina ingerida: @(string.Format("{0:0.00}", iPorcent))%</h3>
+                 <h4>Proteinas: @(string.Format("{0:0.00}", proteinasTotais)) %</h4>
+                    <div class="progress">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width:@(Convert.ToInt32(iPorcent))%;" aria-valuenow=@(valorEnergetico) aria-valuemin="0" aria-valuemax=@(valorEnergetico)></div>
+                    </div>
+                <hr />
+                iPorcent = gordurasTotais / valorEnergetico;
+                iPorcent = iPorcent * 100;
+                    <h3>Porcentagem de gordura ingerida: @(string.Format("{0:0.00}", iPorcent))%</h3>
+                <h4>Gorduras Totais em g.: @(string.Format("{0:0.00}", gordurasTotais))</h4>
+                    <div class="progress">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width:@(Convert.ToInt32(iPorcent))%;" aria-valuenow=@(valorEnergetico) aria-valuemin="0" aria-valuemax=@(valorEnergetico)></div>
+                    </div>
+                <hr />
+                iPorcent = calcioTotal / valorEnergetico;
+                iPorcent = iPorcent * 100;
+                <h3>Porcentagem de calcio ingerido: @(string.Format("{0:0.00}", iPorcent))%</h3>
+                <h4>Calcio em mg: @(string.Format("{0:0.00}", calcioTotal))</h4>
+                <div class="progress">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width:@(Convert.ToInt32(iPorcent))%;" aria-valuenow=@(valorEnergetico) aria-valuemin="0" aria-valuemax=@(valorEnergetico)></div>
+                </div>
+                <hr />
+                iPorcent = fosforo / valorEnergetico;
+                iPorcent = iPorcent * 100;
+                <h3>Porcentagem de fosforo ingerida: @(string.Format("{0:0.00}", iPorcent))%</h3>
+                <h4>Fosforo em mg: @(string.Format("{0:0.00}", fosforo))</h4>
+                <div class="progress">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width:@(Convert.ToInt32(iPorcent))%;" aria-valuenow=@(valorEnergetico) aria-valuemin="0" aria-valuemax=@(valorEnergetico)></div>
+                </div>
+                <hr />
+                iPorcent = carboidratoTotal / valorEnergetico;
+                iPorcent = iPorcent * 100;
+                <h3>Porcentagem de carboidrato ingerido: @(string.Format("{0:0.00}", iPorcent))%</h3>
+                    <h4>Carboidrato em gramas: @(string.Format("{0:0.00}", carboidratoTotal))</h4>
+                <div class="progress">                 
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width:@(Convert.ToInt32(iPorcent))%;" aria-valuenow=@(valorEnergetico) aria-valuemin="0" aria-valuemax=@(valorEnergetico)></div>
+                </div>
+                <hr />
+                iPorcent = gordurasTotais / valorEnergetico;
+                iPorcent = iPorcent * 100;
+                <h3>Porcentagem de vitaminaA ingerida: @(string.Format("{0:0.00}", iPorcent))%</h3>
+                    <h2>Vitamina A em mg: @(string.Format("{0:0.00}", vitaminaATotal))</h2>
+                <div class="progress">                
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width:@(Convert.ToInt32(iPorcent))%;" aria-valuenow=@(valorEnergetico) aria-valuemin="0" aria-valuemax=@(valorEnergetico)></div>
+                </div>
+
+                <hr />
+
+            }
+
+        </div>
+        <p>
+            <a class="btn btn-light" asp-action="Index" asp-controller="Alimentacao" asp-route-id="@item.idAlimentacao">Voltar para diário</a>
+        </p>
+         </div>
+    </body>
+</div>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    }

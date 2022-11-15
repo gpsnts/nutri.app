@@ -1,0 +1,38 @@
+@model NutriApp.Models.AlimentacaoDia
+
+@{
+    ViewData["Title"] = "Criar diário de alimentação";
+}
+
+<h1>Criar novo diário de alimentação</h1>
+
+<hr />
+<div class="container-fluid">
+    <div class="col-auto">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Dia" class="control-label"></label>
+                <input asp-for="Dia" class="form-control" />
+                <span asp-validation-for="Dia" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DiaDate" class="control-label"></label>
+                <input asp-for="DiaDate" class="form-control" />
+                <span asp-validation-for="DiaDate" class="text-danger"></span>
+            </div>
+            <hr />
+            <div class="form-group">
+                <input type="submit" asp-action="Create" value="Criar nota" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <a class="btn btn-primary" asp-action="Index">Voltar para resumo alimentação</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

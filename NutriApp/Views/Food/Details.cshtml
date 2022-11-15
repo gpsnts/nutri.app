@@ -1,0 +1,78 @@
+@model NutriApp.Models.Food
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Food</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.nome)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.nome)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.proteinas)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.proteinas)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.gordurasTotais)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.gordurasTotais)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.carboidrato)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.carboidrato)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.calico)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.calico)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ferro)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ferro)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.fosforo)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.fosforo)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.vitaminaA)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.vitaminaA)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.valorEnergetico)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.valorEnergetico)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.porcao)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.porcao)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

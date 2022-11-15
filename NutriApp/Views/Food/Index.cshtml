@@ -1,0 +1,93 @@
+@model IEnumerable<NutriApp.Models.Food>
+
+@{
+    ViewData["Title"] = "Tabela de alimentos";
+}
+<p>
+    <a class="btn btn-dark" asp-action="Create">INCLUIR ALIMENTO</a>
+</p>
+<div class="container-fluid">
+    <div class="table-responsive">
+        <div class="container-fluid">
+            <table class="table table-hover border-dark" >
+    <thead >
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.proteinas)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.gordurasTotais)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.carboidrato)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.calico)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ferro)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.fosforo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.vitaminaA)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.valorEnergetico)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.porcao)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.proteinas)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.gordurasTotais)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.carboidrato)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.calico)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ferro)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.fosforo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.vitaminaA)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.valorEnergetico)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.porcao)
+            </td>
+            <td>
+                <div class="btn-group-vertical">
+                                    <a class="btn btn-dark" asp-action="Edit" asp-route-id="@item.Id">Edit</a> 
+                                    <a class="btn btn-dark" asp-action="Details" asp-route-id="@item.Id">Details</a> 
+                                    <a class="btn btn-dark" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </div>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+</div>
+</div>
